@@ -72,7 +72,7 @@
     <div class="brand-wrap" >
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg" alt="avatar">
+          <img src="/img/picture.jpg" alt="avatar">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname" id="name">John Doe</h5>
@@ -122,15 +122,15 @@
             
       <div class="nav2">
           
-              <a class="nav2item" data-title="Email" href="mailto:1755811882@qq.com" target="_parent"title="Email" >
+              <a class="nav2item" data-title="Email" href="/hou0608@aliyun.com" target="_parent"title="Email" >
                 <i class="icon icon-lg icon-envelope-o envelope-o"></i>
               </a>
           
-              <a class="nav2item" data-title="Github" href="https://github.com/tomotoes" target="_blank"title="Github" >
+              <a class="nav2item" data-title="Github" href="https://github.com/hou68" target="_blank"title="Github" >
                 <i class="icon icon-lg icon-github github"></i>
               </a>
           
-              <a class="nav2item" data-title="微博" href="https://weibo.com/u/6179399347" target="_blank"title="微博" >
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/1854475461/home?wvr=57" target="_blank"title="微博" >
                 <i class="icon icon-lg icon-weibo weibo"></i>
               </a>
           
@@ -203,7 +203,7 @@
     <article class="page-article fade" itemprop="blogPage">
         
             <div class="card page-about-me flex-row">
-                <a href="/" class="avatar waves-effect waves-circle waves-light"><img src="/img/avatar.jpg"></a>
+                <a href="/" class="avatar waves-effect waves-circle waves-light"><img src="/img/picture.jpg"></a>
                 <div class="content flex-col">
                     <p><strong>John Doe</strong></p>
                     <p><em></em></p>
@@ -227,6 +227,30 @@
     
 
     
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
     </article>
