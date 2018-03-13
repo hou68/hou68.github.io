@@ -188,6 +188,177 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-多线程"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/2018/03/13/多线程/">Java多线程</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2018-03-13 20:08:18" datetime="2018-03-13T12:08:18.019Z"  itemprop="datePublished">2018-03-13</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="Java实现多线程的几种方式："><a href="#Java实现多线程的几种方式：" class="headerlink" title="Java实现多线程的几种方式："></a>Java实现多线程的几种方式：</h3><blockquote>
+<ol>
+<li>继承Thread类，重写父类的run()方法</li>
+<li>实现Runnable接口</li>
+<li>使用ExecutorService、Callable、Future实现由返回结果的多线程<br></li>
+</ol>
+</blockquote>
+<p>&nbsp;&nbsp;其中Thread类中实现了Runnable接口,并且启动线程的时候要用到start()方法，所有当我们实现Runnable接口的时候，需要创建一个Thread对象，来启动线程。带有返回值的线程是jdk1.5引入的新特性，实现Callable时需要重写call()方法，当启动线程的时候可以获取一个Future的对象，在这个对象上调用get()方法就可以获取到Callable任务返回的Object了。</p>
+<h3 id="Callable和Future的了解"><a href="#Callable和Future的了解" class="headerlink" title="Callable和Future的了解"></a>Callable和Future的了解</h3><ol>
+<li>Callable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface Callable&lt;V&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * Computes a result, or throws an exception if unable to do so.</span><br><span class="line">     *</span><br><span class="line">     * @return computed result</span><br><span class="line">     * @throws Exception if unable to compute a result</span><br><span class="line">     */</span><br><span class="line">    V call() throws Exception;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&nbsp;&nbsp;从源码中看，我们可以知道call()方法有返回值并且可以抛出异常，callable常与ExecutorService配合来使用，启动线程调用sumbit()方法即可</p>
+<ol>
+<li>Future<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public interface Future&lt;V&gt; &#123;</span><br><span class="line">	/**</span><br><span class="line">	*取消任务，如果取消任务成功则返回true</span><br><span class="line">	*/</span><br><span class="line">    boolean cancel(boolean mayInterruptIfRunning);</span><br><span class="line">	/**</span><br><span class="line">	*表示任务是否被取消成功，如果在任务正常完成前被取消成功，则返回 true。</span><br><span class="line">	*/</span><br><span class="line">    boolean isCancelled();</span><br><span class="line">	/**</span><br><span class="line">	*表示任务是否已经完成，若任务完成，则返回true；</span><br><span class="line">	*/</span><br><span class="line">    boolean isDone();</span><br><span class="line">	/**</span><br><span class="line">	*用来获取执行结果，这个方法会产生阻塞，会一直等到任务执行完毕才返回；</span><br><span class="line">	*/</span><br><span class="line">    V get() throws InterruptedException, ExecutionException;</span><br><span class="line">	/**</span><br><span class="line">	*用来获取执行结果，如果在指定时间内，还没获取到结果，就直接返回null。</span><br><span class="line">	*/</span><br><span class="line">    V get(long timeout, TimeUnit unit)</span><br><span class="line">        throws InterruptedException, ExecutionException, TimeoutException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&nbsp;&nbsp;由源码可以看出来Future一共有三种功能：1、判断任务是否完成，2、手动取消任务，3、获取任务执行结构</p>
+<p>###synchronized关键字的用法<br>synchronized 是 java语言的关键字，当它用来修饰一个方法或者一个代码块的时候，能够保证在同一时刻最多只有一个线程执行该段代码。<br></p>
+<ol>
+<li>当两个并发线程访问同一个对象中的这个synchronized(this)同步代码块时，一个时间内只能有一个线程得到执行。另一个线程必须等待当前线程执行完这个代码块以后才能执行该代码块。</li>
+<li>当一个线程访问一个对象的synchronized(this)同步代码块时，另一个线程仍然可以访问该对象中的非synchronized(this)同步代码块。</li>
+<li>当一个线程访问对象的一个synchronized(this)同步代码块时，其他线程对象中所有其它synchronized(this)同步代码块的访问将被阻塞。</li>
+<li>当一个线程访问对象的一个synchronized(this)同步代码块时，它就获得了这个对象的对象锁。结果，其它线程对该对象所有同步代码部分的访问都被暂时阻塞。<br>###synchronized关键字的缺点<br>&nbsp;&nbsp;当多个线程尝试获取锁时，未获取到锁的线程会不断的尝试获取锁，而不会发生中断，这样会造成性能消耗。<br>###Lock接口中的实现类<br>&nbsp;&nbsp;Lock接口有三个实现类，一个是ReentrantLock,另两个是ReentrantReadWriteLock类中的两个静态内部类ReadLock和WriteLock</li>
+</ol>
+<p>###java 线程的几种状态</p>
+<ul>
+<li>NEW 状态是指线程刚创建, 尚未启动</li>
+<li>RUNNABLE 状态是线程正在正常运行中, 当然可能会有某种耗时计算/IO等待的操作/CPU时间片切换等, 这个状态下发生的等待一般是其他系统资源, 而不是锁, Sleep等</li>
+<li>BLOCKED  这个状态下, 是在多个线程有同步操作的场景, 比如正在等待另一个线程的synchronized 块的执行释放, 或者可重入的 synchronized块里别人调用wait() 方法, 也就是这里是线程在等待进入临界区</li>
+<li>WAITING  这个状态下是指线程拥有了某个锁之后, 调用了他的wait()方法, 等待其他线程/锁拥有者调用 notify / notifyAll 一遍该线程可以继续下一步操作, 这里要区分 BLOCKED 和 WATING 的区别, 一个是在临界点外面等待进入, 一个是在理解点里面wait等待别人notify, 线程调用了join方法 join了另外的线程的时候, 也会进入WAITING状态, 等待被他join的线程执行结束</li>
+<li>TIMED_WAITING  这个状态就是有限的(时间限制)的WAITING, 一般出现在调用wait(long), join(long)等情况下, 另外一个线程sleep后, 也会进入TIMED_WAITING状态</li>
+<li>TERMINATED 这个状态下表示 该线程的run方法已经执行完毕了, 基本上就等于死亡了(当时如果线程被持久持有, 可能不会被回收)<h3 id="sleep和wait的区别"><a href="#sleep和wait的区别" class="headerlink" title="sleep和wait的区别"></a>sleep和wait的区别</h3></li>
+<li>每个对象都有一个锁来控制同步访问，Synchronized关键字可以和对象的锁交互，来实现同步方法或同步块。sleep()方法正在执行的线程主动让出CPU（然后CPU就可以去执行其他任务），在sleep指定时间后CPU再回到该线程继续往下执行(注意：sleep方法只让出了CPU，而并不会释放同步资源锁！！！)；wait()方法则是指当前线程让自己暂时退让出同步资源锁，以便其他正在等待该资源的线程得到该资源进而运行，只有调用了notify()方法，之前调用wait()的线程才会解除wait状态，可以去参与竞争同步资源锁，进而得到执行。（注意：notify的作用相当于叫醒睡着的人，而并不会给他分配任务，就是说notify只是让之前调用wait的线程有权利重新参与线程的调度）；</li>
+<li>sleep()方法可以在任何地方使用；wait()方法则只能在同步方法或同步块中使用；</li>
+<li>sleep()是线程线程类（Thread）的方法，调用会暂停此线程指定的时间，但监控依然保持，不会释放对象锁，到时间自动恢复；wait()是Object的方法，调用会放弃对象锁，进入等待队列，待调用notify()/notifyAll()唤醒指定的线程或者所有线程，才会进入锁池，不再次获得对象锁才会进入运行状态；<h3 id="notify和notifyall的区别"><a href="#notify和notifyall的区别" class="headerlink" title="notify和notifyall的区别"></a>notify和notifyall的区别</h3>当一个线程进入wait之后，就必须等其他线程notify/notifyall,使用notifyall,可以唤醒所有处于wait状态的线程，使其重新进入锁的争夺队列中，而notify只能唤醒一个。注意，任何时候只有一个线程可以获得锁，也就是说只有一个线程可以运行synchronized 中的代码，notifyall只是让处于wait的线程重新拥有锁的争夺权，但是只会有一个获得锁并执行。<h3 id="线程池常用参数"><a href="#线程池常用参数" class="headerlink" title="线程池常用参数"></a>线程池常用参数</h3></li>
+<li>corePoolSize<br>  在创建了线程池后，默认情况下，线程池中并没有任何线程，而是等待有任务到来才创建线程去执行任务，（除非调用了prestartAllCoreThreads()或者prestartCoreThread()方法，从这2个方法的名字就可以看出，是预创建线程的意思，即在没有任务到来之前就创建corePoolSize个线程或者一个线程）。<br>  默认情况下，在创建了线程池后，线程池中的线程数为0，当有任务来之后，就会创建一个线程去执行任务，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列当中。核心线程在allowCoreThreadTimeout被设置为true时会超时退出，默认情况下不会退出。</li>
+<li>maxPoolSize<br>  当线程数大于或等于核心线程，且任务队列已满时，线程池会创建新的线程，直到线程数量达到maxPoolSize。如果线程数已等于maxPoolSize，且任务队列已满，则已超出线程池的处理能力，线程池会拒绝处理任务而抛出异常。</li>
+<li>keepAliveTime<br>  当线程空闲时间达到keepAliveTime，该线程会退出，直到线程数量等于corePoolSize。如果allowCoreThreadTimeout设置为true，则所有线程均会退出直到线程数量为0。</li>
+<li>allowCoreThreadTimeout<br>  是否允许核心线程空闲退出，默认值为false。</li>
+<li>queueCapacity<br>  任务队列容量。从maxPoolSize的描述上可以看出，任务队列的容量会影响到线程的变化，因此任务队列的长度也需要恰当的设置。</li>
+</ul>
+
+    
+        <div>
+            <a href="/2018/03/13/多线程/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-oracle"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/2018/03/12/oracle/">oracle学习笔记</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2018-03-12 23:52:38" datetime="2018-03-12T15:52:38.973Z"  itemprop="datePublished">2018-03-12</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <h3 id="一、ORACLE常见数据库优化手段"><a href="#一、ORACLE常见数据库优化手段" class="headerlink" title="一、ORACLE常见数据库优化手段"></a>一、ORACLE常见数据库优化手段</h3><ol>
+<li>SQL语句尽量用大写的</li>
+<li>使用表的别名</li>
+<li>选择最有效率的表名顺序(只在基于规则的优化器(RBO)中有效)ORACLE 的解析器按照从右到左的顺序处理FROM子句中的表名，FROM子句中写在最后的表(基础表也称为驱动表,driving table)将被最先处理，在FROM子句中包含多个表的情况下,必须选择记录条数最少的表作为基础表。如果有3个以上的表连接查询, 那就需要选择交叉表(intersection table)作为基础表, 交叉表是指那个被其他表所引用的表。</li>
+<li>WHERE子句中的连接顺序:ORACLE采用自下而上的顺序解析WHERE子句,根据这个原理,表之间的连接必须写在其他WHERE条件之前, 那些可以过滤掉最大数量记录的条件必须写在WHERE子句的末尾。</li>
+<li>SELECT子句中避免使用 <em> ：因为oracle内部会将</em>转变为所有列名</li>
+<li>减少访问数据库的次数：ORACLE在内部执行了许多工作: 解析SQL语句,估算索引的利用率,绑定变量,读数据块等。</li>
+<li>整合简单、无关联的数据库访问：如果有几个简单的数据库查询语句,可以整合到一个查询中(即使它们之间没有关系)。</li>
+<li>用&gt;=替代&gt;</li>
+<li>避免在索引列上使用NOT：NOT会产生在和在索引列上使用函数相同的影响。当ORACLE遇到NOT,就会停止使用索引转而执行全表扫描。</li>
+<li>WHERE子句: 某些SELECT 语句中的WHERE子句不使用索引。(1)’!=’不走索引。索引只能告诉我们什么存在于表中, 而不能告诉你什么不在表中。(2)’||’是字符连接函数。就象其他函数那样, 停用了索引。(3)’+’是数学函数。和其他数学函数一样, 停用了索引。(4)相同的索引列不能互相比较,这将会启用全表扫描。</li>
+</ol>
+<h3 id="二、索引的优缺点"><a href="#二、索引的优缺点" class="headerlink" title="二、索引的优缺点"></a>二、索引的优缺点</h3><ul>
+<li>优点：1）通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。<br>2）可以大大加快数据的检索速度，这也是创建索引的最主要的原因。<br>3）可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。<br>4）在使用分组和排序 子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。<br>5）通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</li>
+<li>缺点：1）创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。<br>2）索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。<br>3）当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。</li>
+<li>应用：1）在经常需要搜索的列上，可以加快搜索的速度；<br>2）在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；<br>3）在经常用在连接的列上，这 些列主要是一些外键，可以加快连接的速度；<br>4）在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；<br>5）在经常需要排序的列上创 建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间； 搜索<br>6）在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。</li>
+</ul>
+
+    
+        <div>
+            <a href="/2018/03/12/oracle/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-serialization"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a href="/2018/03/11/serialization/">Java序列化</a>
+    </h3>
+  
+
+
+
+
+     <div class="post-meta">
+        <time class="post-time" title="2018-03-11 23:31:11" datetime="2018-03-11T15:31:11.466Z"  itemprop="datePublished">2018-03-11</time>
+
+    </div>
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        <p>###一、Java序列化简介<br>&emsp;&emsp;Java 对象序列化是 JDK 1.1 中引入的一组开创性特性之一，用于作为一种将 Java 对象的状态转换为字节数组，以便存储或传输的机制，以后，仍可以将字节数组转换回 Java 对象原有的状态。<br>实际上，序列化的思想是 “冻结” 对象状态，传输对象状态（写到磁盘、通过网络传输等等），然后 “解冻” 状态，重新获得可用的 Java 对象。所有这些事情的发生有点像是魔术，这要归功于 ObjectInputStream/ObjectOutputStream 类、完全保真的元数据以及程序员愿意用 Serializable 标识接口标记他们的类，从而 “参与” 这个过程</p>
+
+    
+        <div>
+            <a href="/2018/03/11/serialization/" class="post-more waves-button">
+                阅读全文 »
+            </a>
+        </div>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-java"
   class="article-card article-type-post" itemprop="blogPost">
 
@@ -211,7 +382,7 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><h3 id="一、HashMap实现原理"><a href="#一、HashMap实现原理" class="headerlink" title="一、HashMap实现原理"></a>一、HashMap实现原理</h3><p>&emsp;&emsp;HashMap是基于哈希表实现的，每一个元素都是key-value对，其内部是通过单链表结构解决内部冲突问题,当容量不足的时候，会通过自动增长来解决这个问题<br><br>&emsp;&emsp;HashMap是非线程安全的，所以用于单线程环境下,多线程环境下可以采用concurrent并发包下的concurrentHashMap。<br><br>&emsp;&emsp;HashMap实现了Serializable接口，因此它支持序列化，实现了Cloneable接口，能被克隆。<br><br>&emsp;&emsp;HashMap由数组+链表组成的，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的，如果定位到的数组位置不含链表（当前entry的next指向null）,那么对于查找，添加等操作很快，仅需一次寻址即可；如果定位到的数组包含链表，对于添加操作，其时间复杂度依然为O(1)，因为最新的Entry会插入链表头部，只需要简单的改变引用链，而对于查找操作来讲，此时就需要遍历链表，然后通过key对象的equals方法逐一对比。所以从性能方面考虑，HashMap中的链表出现越少，性能才会越好。<br><br>&emsp;&emsp;链表中节点的数据结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">// Entry是单向链表。    </span><br><span class="line">// 它是 “HashMap链式存储法”对应的链表。    </span><br><span class="line">// 它实现了Map.Entry 接口，即实现getKey(), getValue(), setValue(V value), equals(Object o), hashCode()这些函数    </span><br><span class="line">static class Entry&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;    </span><br><span class="line">    final K key;    </span><br><span class="line">    V value;    </span><br><span class="line">    // 指向下一个节点    </span><br><span class="line">    Entry&lt;K,V&gt; next;    </span><br><span class="line">    final int hash;    </span><br><span class="line"></span><br><span class="line">    // 构造函数。    </span><br><span class="line">    // 输入参数包括&quot;哈希值(h)&quot;, &quot;键(k)&quot;, &quot;值(v)&quot;, &quot;下一节点(n)&quot;    </span><br><span class="line">    Entry(int h, K k, V v, Entry&lt;K,V&gt; n) &#123;    </span><br><span class="line">        value = v;    </span><br><span class="line">        next = n;    </span><br><span class="line">        key = k;    </span><br><span class="line">        hash = h;    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    public final K getKey() &#123;    </span><br><span class="line">        return key;    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    public final V getValue() &#123;    </span><br><span class="line">        return value;    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    public final V setValue(V newValue) &#123;    </span><br><span class="line">        V oldValue = value;    </span><br><span class="line">        value = newValue;    </span><br><span class="line">        return oldValue;    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    // 判断两个Entry是否相等    </span><br><span class="line">    // 若两个Entry的“key”和“value”都相等，则返回true。    </span><br><span class="line">    // 否则，返回false    </span><br><span class="line">    public final boolean equals(Object o) &#123;    </span><br><span class="line">        if (!(o instanceof Map.Entry))    </span><br><span class="line">            return false;    </span><br><span class="line">        Map.Entry e = (Map.Entry)o;    </span><br><span class="line">        Object k1 = getKey();    </span><br><span class="line">        Object k2 = e.getKey();    </span><br><span class="line">        if (k1 == k2 || (k1 != null &amp;&amp; k1.equals(k2))) &#123;    </span><br><span class="line">            Object v1 = getValue();    </span><br><span class="line">            Object v2 = e.getValue();    </span><br><span class="line">            if (v1 == v2 || (v1 != null &amp;&amp; v1.equals(v2)))    </span><br><span class="line">                return true;    </span><br><span class="line">        &#125;    </span><br><span class="line">        return false;    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    // 实现hashCode()    </span><br><span class="line">    public final int hashCode() &#123;    </span><br><span class="line">        return (key==null   ? 0 : key.hashCode()) ^    </span><br><span class="line">               (value==null ? 0 : value.hashCode());    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    public final String toString() &#123;    </span><br><span class="line">        return getKey() + &quot;=&quot; + getValue();    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    // 当向HashMap中添加元素时，绘调用recordAccess()。    </span><br><span class="line">    // 这里不做任何处理    </span><br><span class="line">    void recordAccess(HashMap&lt;K,V&gt; m) &#123;    </span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line">    // 当从HashMap中删除元素时，绘调用recordRemoval()。    </span><br><span class="line">    // 这里不做任何处理    </span><br><span class="line">    void recordRemoval(HashMap&lt;K,V&gt; m) &#123;    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><h3 id="一、HashMap实现原理"><a href="#一、HashMap实现原理" class="headerlink" title="一、HashMap实现原理"></a>一、HashMap实现原理</h3><p>&emsp;&emsp;HashMap是基于哈希表实现的，每一个元素都是key-value对，其内部是通过单链表结构解决内部冲突问题,当容量不足的时候，会通过自动增长来解决这个问题<br><br>&emsp;&emsp;HashMap是非线程安全的，所以用于单线程环境下,多线程环境下可以采用concurrent并发包下的concurrentHashMap。<br><br>&emsp;&emsp;HashMap实现了Serializable接口，因此它支持序列化，实现了Cloneable接口，能被克隆。<br><br>&emsp;&emsp;HashMap由数组+链表组成的，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的，如果定位到的数组位置不含链表（当前entry的next指向null）,那么对于查找，添加等操作很快，仅需一次寻址即可；如果定位到的数组包含链表，对于添加操作，其时间复杂度依然为O(1)，因为最新的Node会插入链表头部，只需要简单的改变引用链，而对于查找操作来讲，此时就需要遍历链表，然后通过key对象的equals方法逐一对比。所以从性能方面考虑，HashMap中的链表出现越少，性能才会越好。<br><br>&emsp;&emsp;链表中节点的数据结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">// Node是单向链表。    </span><br><span class="line">// 它是 “HashMap链式存储法”对应的链表。    </span><br><span class="line">// 它实现了Map.Entry 接口，即实现getKey(), getValue(), setValue(V value), equals(Object o), hashCode()这些函数    </span><br><span class="line">static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;</span><br><span class="line">       final int hash;</span><br><span class="line">       final K key;</span><br><span class="line">       V value;</span><br><span class="line">       Node&lt;K,V&gt; next;</span><br><span class="line"></span><br><span class="line">       Node(int hash, K key, V value, Node&lt;K,V&gt; next) &#123;</span><br><span class="line">           this.hash = hash;</span><br><span class="line">           this.key = key;</span><br><span class="line">           this.value = value;</span><br><span class="line">           this.next = next;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public final K getKey()        &#123; return key; &#125;</span><br><span class="line">       public final V getValue()      &#123; return value; &#125;</span><br><span class="line">       public final String toString() &#123; return key + &quot;=&quot; + value; &#125;</span><br><span class="line"></span><br><span class="line">       public final int hashCode() &#123;</span><br><span class="line">           return Objects.hashCode(key) ^ Objects.hashCode(value);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public final V setValue(V newValue) &#123;</span><br><span class="line">           V oldValue = value;</span><br><span class="line">           value = newValue;</span><br><span class="line">           return oldValue;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public final boolean equals(Object o) &#123;</span><br><span class="line">           if (o == this)</span><br><span class="line">               return true;</span><br><span class="line">           if (o instanceof Map.Entry) &#123;</span><br><span class="line">               Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;</span><br><span class="line">               if (Objects.equals(key, e.getKey()) &amp;&amp;</span><br><span class="line">                   Objects.equals(value, e.getValue()))</span><br><span class="line">                   return true;</span><br><span class="line">           &#125;</span><br><span class="line">           return false;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
 <p>&emsp;&emsp; 它的结构元素除了key、value、hash外，还有next，next指向下一个节点。另外，这里覆写了equals和hashCode方法来保证键值对的独一无二。</p>
 <h3 id="二、HashMap是怎么扩容的，简介加载因子"><a href="#二、HashMap是怎么扩容的，简介加载因子" class="headerlink" title="二、HashMap是怎么扩容的，简介加载因子"></a>二、HashMap是怎么扩容的，简介加载因子</h3><p>&emsp;&emsp;HashMap共有四个构造方法。构造方法中提到了两个很重要的参数：初始容量和加载因子。这两个参数是影响HashMap性能的重要参数，其中容量表示哈希表中槽的数量（即哈希数组的长度），初始容量是创建哈希表时的容量（从构造函数中可以看出，如果不指明，则默认为16），加载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 resize 操作（即扩容）。<br>&emsp;&emsp;如果加载因子越大，对空间的利用更充分，但是查找效率会降低（链表长度会越来越长）；如果加载因子太小，那么表中的数据将过于稀疏（很多空间还没用，就开始扩容了），对空间造成严重浪费。如果我们在构造方法中不指定，则系统默认加载因子为0.75，这是一个比较理想的值，一般情况下我们是无需修改的。另外无论我们指定的容量为多少，构造方法都会将实际容量设为不小于指定容量的2的次方的一个数，且最大值不能超过2的30次方</p>
 <h3 id="三、jdk8对hashmap做了什么优化"><a href="#三、jdk8对hashmap做了什么优化" class="headerlink" title="三、jdk8对hashmap做了什么优化"></a>三、jdk8对hashmap做了什么优化</h3><p>&emsp;&emsp;在JDK1.8版本中，对数据结构做了进一步的优化，引入了红黑树。而当链表长度太长（默认超过8）时，链表就转换为红黑树，利用红黑树快速增删改查的特点提高HashMap的性能，其中会用到红黑树的插入、删除、查找等算法</p>

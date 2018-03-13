@@ -6,7 +6,7 @@
     
     
     
-    <title>HashMap | 个人空间</title>
+    <title>oracle学习笔记 | 个人空间</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
     <meta name="theme-color" content="#77AAFF">
@@ -39,17 +39,17 @@
 
 
     
-    <meta name="description" content="HashMap一、HashMap实现原理&amp;emsp;&amp;emsp;HashMap是基于哈希表实现的，每一个元素都是key-value对，其内部是通过单链表结构解决内部冲突问题,当容量不足的时候，会通过自动增长来解决这个问题&amp;emsp;&amp;emsp;HashMap是非线程安全的，所以用于单线程环境下,多线程环境下可以采用concurrent并发包下的concurrentHashMap。&amp;emsp;&amp;em">
+    <meta name="description" content="一、ORACLE常见数据库优化手段 SQL语句尽量用大写的 使用表的别名 选择最有效率的表名顺序(只在基于规则的优化器(RBO)中有效)ORACLE 的解析器按照从右到左的顺序处理FROM子句中的表名，FROM子句中写在最后的表(基础表也称为驱动表,driving table)将被最先处理，在FROM子句中包含多个表的情况下,必须选择记录条数最少的表作为基础表。如果有3个以上的表连接查询, 那就需">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HashMap">
-<meta property="og:url" content="http://yoursite.com/2018/03/07/java/index.html">
+<meta property="og:title" content="oracle学习笔记">
+<meta property="og:url" content="http://yoursite.com/2018/03/12/oracle/index.html">
 <meta property="og:site_name" content="个人空间">
-<meta property="og:description" content="HashMap一、HashMap实现原理&amp;emsp;&amp;emsp;HashMap是基于哈希表实现的，每一个元素都是key-value对，其内部是通过单链表结构解决内部冲突问题,当容量不足的时候，会通过自动增长来解决这个问题&amp;emsp;&amp;emsp;HashMap是非线程安全的，所以用于单线程环境下,多线程环境下可以采用concurrent并发包下的concurrentHashMap。&amp;emsp;&amp;em">
+<meta property="og:description" content="一、ORACLE常见数据库优化手段 SQL语句尽量用大写的 使用表的别名 选择最有效率的表名顺序(只在基于规则的优化器(RBO)中有效)ORACLE 的解析器按照从右到左的顺序处理FROM子句中的表名，FROM子句中写在最后的表(基础表也称为驱动表,driving table)将被最先处理，在FROM子句中包含多个表的情况下,必须选择记录条数最少的表作为基础表。如果有3个以上的表连接查询, 那就需">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-12T12:40:04.145Z">
+<meta property="og:updated_time" content="2018-03-13T12:25:14.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HashMap">
-<meta name="twitter:description" content="HashMap一、HashMap实现原理&amp;emsp;&amp;emsp;HashMap是基于哈希表实现的，每一个元素都是key-value对，其内部是通过单链表结构解决内部冲突问题,当容量不足的时候，会通过自动增长来解决这个问题&amp;emsp;&amp;emsp;HashMap是非线程安全的，所以用于单线程环境下,多线程环境下可以采用concurrent并发包下的concurrentHashMap。&amp;emsp;&amp;em">
+<meta name="twitter:title" content="oracle学习笔记">
+<meta name="twitter:description" content="一、ORACLE常见数据库优化手段 SQL语句尽量用大写的 使用表的别名 选择最有效率的表名顺序(只在基于规则的优化器(RBO)中有效)ORACLE 的解析器按照从右到左的顺序处理FROM子句中的表名，FROM子句中写在最后的表(基础表也称为驱动表,driving table)将被最先处理，在FROM子句中包含多个表的情况下,必须选择记录条数最少的表作为基础表。如果有3个以上的表连接查询, 那就需">
     
         <link rel="alternate" type="application/atom+xml" title="个人空间" href="/atom.xml">
     
@@ -151,7 +151,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">HashMap</div>
+        <div class="flex-col header-title ellipsis">oracle学习笔记</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -191,19 +191,19 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HashMap"><span class="post-toc-number">1.</span> <span class="post-toc-text">HashMap</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、HashMap实现原理"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一、HashMap实现原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、HashMap是怎么扩容的，简介加载因子"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">二、HashMap是怎么扩容的，简介加载因子</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三、jdk8对hashmap做了什么优化"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">三、jdk8对hashmap做了什么优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四、HashMap在高并发下如果没有处理线程安全会有什么的安全隐患"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">四、HashMap在高并发下如果没有处理线程安全会有什么的安全隐患</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一、ORACLE常见数据库优化手段"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、ORACLE常见数据库优化手段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二、索引的优缺点"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、索引的优缺点</span></a></li></ol>
         </nav>
     </aside>
    
-<article id="post-java"
+<article id="post-oracle"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">HashMap</h1>
+        <h1 class="post-card-title">oracle学习笔记</h1>
         <div class="post-meta">
             <i class="icon icon-lg icon-calendar-o"></i>
             发表于
-            <time class="post-time" title="2018-03-07 23:21:38" datetime="2018-03-07T15:21:38.028Z"  itemprop="datePublished">2018-03-07</time>
+            <time class="post-time" title="2018-03-12 23:52:38" datetime="2018-03-12T15:52:38.973Z"  itemprop="datePublished">2018-03-12</time>
 
             <br id="mybreak"/>
             
@@ -225,11 +225,23 @@
             阅读本文可能花费您&nbsp;<span class="post-count">4</span>&nbsp;分钟
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><h3 id="一、HashMap实现原理"><a href="#一、HashMap实现原理" class="headerlink" title="一、HashMap实现原理"></a>一、HashMap实现原理</h3><p>&emsp;&emsp;HashMap是基于哈希表实现的，每一个元素都是key-value对，其内部是通过单链表结构解决内部冲突问题,当容量不足的时候，会通过自动增长来解决这个问题<br><br>&emsp;&emsp;HashMap是非线程安全的，所以用于单线程环境下,多线程环境下可以采用concurrent并发包下的concurrentHashMap。<br><br>&emsp;&emsp;HashMap实现了Serializable接口，因此它支持序列化，实现了Cloneable接口，能被克隆。<br><br>&emsp;&emsp;HashMap由数组+链表组成的，数组是HashMap的主体，链表则是主要为了解决哈希冲突而存在的，如果定位到的数组位置不含链表（当前entry的next指向null）,那么对于查找，添加等操作很快，仅需一次寻址即可；如果定位到的数组包含链表，对于添加操作，其时间复杂度依然为O(1)，因为最新的Node会插入链表头部，只需要简单的改变引用链，而对于查找操作来讲，此时就需要遍历链表，然后通过key对象的equals方法逐一对比。所以从性能方面考虑，HashMap中的链表出现越少，性能才会越好。<br><br>&emsp;&emsp;链表中节点的数据结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">// Node是单向链表。    </span><br><span class="line">// 它是 “HashMap链式存储法”对应的链表。    </span><br><span class="line">// 它实现了Map.Entry 接口，即实现getKey(), getValue(), setValue(V value), equals(Object o), hashCode()这些函数    </span><br><span class="line">static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;</span><br><span class="line">       final int hash;</span><br><span class="line">       final K key;</span><br><span class="line">       V value;</span><br><span class="line">       Node&lt;K,V&gt; next;</span><br><span class="line"></span><br><span class="line">       Node(int hash, K key, V value, Node&lt;K,V&gt; next) &#123;</span><br><span class="line">           this.hash = hash;</span><br><span class="line">           this.key = key;</span><br><span class="line">           this.value = value;</span><br><span class="line">           this.next = next;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public final K getKey()        &#123; return key; &#125;</span><br><span class="line">       public final V getValue()      &#123; return value; &#125;</span><br><span class="line">       public final String toString() &#123; return key + &quot;=&quot; + value; &#125;</span><br><span class="line"></span><br><span class="line">       public final int hashCode() &#123;</span><br><span class="line">           return Objects.hashCode(key) ^ Objects.hashCode(value);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public final V setValue(V newValue) &#123;</span><br><span class="line">           V oldValue = value;</span><br><span class="line">           value = newValue;</span><br><span class="line">           return oldValue;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       public final boolean equals(Object o) &#123;</span><br><span class="line">           if (o == this)</span><br><span class="line">               return true;</span><br><span class="line">           if (o instanceof Map.Entry) &#123;</span><br><span class="line">               Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;</span><br><span class="line">               if (Objects.equals(key, e.getKey()) &amp;&amp;</span><br><span class="line">                   Objects.equals(value, e.getValue()))</span><br><span class="line">                   return true;</span><br><span class="line">           &#125;</span><br><span class="line">           return false;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp; 它的结构元素除了key、value、hash外，还有next，next指向下一个节点。另外，这里覆写了equals和hashCode方法来保证键值对的独一无二。</p>
-<h3 id="二、HashMap是怎么扩容的，简介加载因子"><a href="#二、HashMap是怎么扩容的，简介加载因子" class="headerlink" title="二、HashMap是怎么扩容的，简介加载因子"></a>二、HashMap是怎么扩容的，简介加载因子</h3><p>&emsp;&emsp;HashMap共有四个构造方法。构造方法中提到了两个很重要的参数：初始容量和加载因子。这两个参数是影响HashMap性能的重要参数，其中容量表示哈希表中槽的数量（即哈希数组的长度），初始容量是创建哈希表时的容量（从构造函数中可以看出，如果不指明，则默认为16），加载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，当哈希表中的条目数超出了加载因子与当前容量的乘积时，则要对该哈希表进行 resize 操作（即扩容）。<br>&emsp;&emsp;如果加载因子越大，对空间的利用更充分，但是查找效率会降低（链表长度会越来越长）；如果加载因子太小，那么表中的数据将过于稀疏（很多空间还没用，就开始扩容了），对空间造成严重浪费。如果我们在构造方法中不指定，则系统默认加载因子为0.75，这是一个比较理想的值，一般情况下我们是无需修改的。另外无论我们指定的容量为多少，构造方法都会将实际容量设为不小于指定容量的2的次方的一个数，且最大值不能超过2的30次方</p>
-<h3 id="三、jdk8对hashmap做了什么优化"><a href="#三、jdk8对hashmap做了什么优化" class="headerlink" title="三、jdk8对hashmap做了什么优化"></a>三、jdk8对hashmap做了什么优化</h3><p>&emsp;&emsp;在JDK1.8版本中，对数据结构做了进一步的优化，引入了红黑树。而当链表长度太长（默认超过8）时，链表就转换为红黑树，利用红黑树快速增删改查的特点提高HashMap的性能，其中会用到红黑树的插入、删除、查找等算法</p>
-<h3 id="四、HashMap在高并发下如果没有处理线程安全会有什么的安全隐患"><a href="#四、HashMap在高并发下如果没有处理线程安全会有什么的安全隐患" class="headerlink" title="四、HashMap在高并发下如果没有处理线程安全会有什么的安全隐患"></a>四、HashMap在高并发下如果没有处理线程安全会有什么的安全隐患</h3><p>&emsp;&emsp;HashMap事实上并非线程安全的，在高并发的情况下，是非常可能发生死循环的，由此造成CPU 100%，这是非常可怕的。所以在多线程的情况下，用HashMap是非常不妥当的行为，应采用线程安全类ConcurrentHashMap进行取代。</p>
+            <h3 id="一、ORACLE常见数据库优化手段"><a href="#一、ORACLE常见数据库优化手段" class="headerlink" title="一、ORACLE常见数据库优化手段"></a>一、ORACLE常见数据库优化手段</h3><ol>
+<li>SQL语句尽量用大写的</li>
+<li>使用表的别名</li>
+<li>选择最有效率的表名顺序(只在基于规则的优化器(RBO)中有效)ORACLE 的解析器按照从右到左的顺序处理FROM子句中的表名，FROM子句中写在最后的表(基础表也称为驱动表,driving table)将被最先处理，在FROM子句中包含多个表的情况下,必须选择记录条数最少的表作为基础表。如果有3个以上的表连接查询, 那就需要选择交叉表(intersection table)作为基础表, 交叉表是指那个被其他表所引用的表。</li>
+<li>WHERE子句中的连接顺序:ORACLE采用自下而上的顺序解析WHERE子句,根据这个原理,表之间的连接必须写在其他WHERE条件之前, 那些可以过滤掉最大数量记录的条件必须写在WHERE子句的末尾。</li>
+<li>SELECT子句中避免使用 <em> ：因为oracle内部会将</em>转变为所有列名</li>
+<li>减少访问数据库的次数：ORACLE在内部执行了许多工作: 解析SQL语句,估算索引的利用率,绑定变量,读数据块等。</li>
+<li>整合简单、无关联的数据库访问：如果有几个简单的数据库查询语句,可以整合到一个查询中(即使它们之间没有关系)。</li>
+<li>用&gt;=替代&gt;</li>
+<li>避免在索引列上使用NOT：NOT会产生在和在索引列上使用函数相同的影响。当ORACLE遇到NOT,就会停止使用索引转而执行全表扫描。</li>
+<li>WHERE子句: 某些SELECT 语句中的WHERE子句不使用索引。(1)’!=’不走索引。索引只能告诉我们什么存在于表中, 而不能告诉你什么不在表中。(2)’||’是字符连接函数。就象其他函数那样, 停用了索引。(3)’+’是数学函数。和其他数学函数一样, 停用了索引。(4)相同的索引列不能互相比较,这将会启用全表扫描。</li>
+</ol>
+<h3 id="二、索引的优缺点"><a href="#二、索引的优缺点" class="headerlink" title="二、索引的优缺点"></a>二、索引的优缺点</h3><ul>
+<li>优点：1）通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。<br>2）可以大大加快数据的检索速度，这也是创建索引的最主要的原因。<br>3）可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。<br>4）在使用分组和排序 子句进行数据检索时，同样可以显著减少查询中分组和排序的时间。<br>5）通过使用索引，可以在查询的过程中，使用优化隐藏器，提高系统的性能。</li>
+<li>缺点：1）创建索引和维护索引要耗费时间，这种时间随着数据量的增加而增加。<br>2）索引需要占物理空间，除了数据表占数据空间之外，每一个索引还要占一定的物理空间，如果要建立聚簇索引，那么需要的空间就会更大。<br>3）当对表中的数据进行增加、删除和修改的时候，索引也要动态的维护，这样就降低了数据的维护速度。</li>
+<li>应用：1）在经常需要搜索的列上，可以加快搜索的速度；<br>2）在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；<br>3）在经常用在连接的列上，这 些列主要是一些外键，可以加快连接的速度；<br>4）在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；<br>5）在经常需要排序的列上创 建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间； 搜索<br>6）在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。</li>
+</ul>
 
         </div>
 
@@ -237,12 +249,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新：<time datetime="2018-03-12T12:40:04.145Z" itemprop="dateUpdated">2018-03-12 20:40:04</time>
+    最后更新：<time datetime="2018-03-13T12:25:14.861Z" itemprop="dateUpdated">2018-03-13 20:25:14</time>
 </span>
 
 
         
-        原文链接：<a href="/2018/03/07/java/" target="_blank" rel="external">http://yoursite.com/2018/03/07/java/</a>
+        原文链接：<a href="/2018/03/12/oracle/" target="_blank" rel="external">http://yoursite.com/2018/03/12/oracle/</a>
         
     </div>
     <footer>
@@ -272,7 +284,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/03/07/java/&title=《HashMap》 — 个人空间&pic=http://yoursite.com/img/picture.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/03/12/oracle/&title=《oracle学习笔记》 — 个人空间&pic=http://yoursite.com/img/picture.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -282,22 +294,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/03/07/java/&title=《HashMap》 — 个人空间&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/03/12/oracle/&title=《oracle学习笔记》 — 个人空间&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/07/java/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/12/oracle/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HashMap》 — 个人空间&url=http://yoursite.com/2018/03/07/java/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《oracle学习笔记》 — 个人空间&url=http://yoursite.com/2018/03/12/oracle/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/07/java/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/12/oracle/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -320,9 +332,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/03/11/serialization/" id="post-prev" class="post-nav-link">
+      <a href="/2018/03/13/多线程/" id="post-prev" class="post-nav-link">
         <h4 class="title" >
-          上一篇：Java序列化
+          上一篇：Java多线程
         </h4>
       </a>
     </div>
@@ -330,8 +342,8 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/02/26/hello-world/" id="post-next" class="post-nav-link">
-        <h4 class="title" data-hover="下一篇：Hello World">下一篇：Hello World</h4>
+      <a href="/2018/03/11/serialization/" id="post-next" class="post-nav-link">
+        <h4 class="title" data-hover="下一篇：Java序列化">下一篇：Java序列化</h4>
       </a>
     </div>
   
@@ -454,7 +466,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/03/07/java/&title=《HashMap》 — 个人空间&pic=http://yoursite.com/img/picture.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/03/12/oracle/&title=《oracle学习笔记》 — 个人空间&pic=http://yoursite.com/img/picture.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -464,22 +476,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/03/07/java/&title=《HashMap》 — 个人空间&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/03/12/oracle/&title=《oracle学习笔记》 — 个人空间&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/07/java/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/12/oracle/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HashMap》 — 个人空间&url=http://yoursite.com/2018/03/07/java/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《oracle学习笔记》 — 个人空间&url=http://yoursite.com/2018/03/12/oracle/&via=http://yoursite.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/07/java/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/12/oracle/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -490,7 +502,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p class="wechatshare">扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABtElEQVR42u3aS4rDMBAFwNz/0p7tQLDzWi0pIpRWwTZ2KYumP3q94nX9W+/X765cb+v5bdMWLi5um3s9rudn7tCdDdw9g4uLu5+bfKYKqv4dz2/GxcU9mZukO/kzuLi4v8GtBqw82OHi4p7GraYgebPja7UaLi5ug5t3Kdf9XtLfxcXFHeJexTUWwp6vF76Oi4u7hZsHlFkjlmogw8XF3c+tNibysqR/98P/iouLu5HbT2uqw5VCgwYXF3cjtzouHRuTJCXQh/fj4uJu4Xaap52XdgY2uLi4q7lJMMqD1Kz06HYDuLi4W7jPrYrqB/KEqbNVXFzc1dz+aKQ6ZM2fiWo1XFzcZdxZJdDY9grJEC4u7hZuPkzN744NUcrjWFxc3MXc6gGLasCaNXbFxcX9FjcfmibFTBLsyiUTLi7uAdyxdGRJFoaLi7ux4MnX2DikU7ng4uLu5849jJVD82MWg5vBxcVtc/vBKz9m0T+0gYuLu5ObpCPVFKdfVkUNU1xc3GO4Y23TCc0UXFzcg7nVQWm19lqe4uDi4k4qfvqHM5Lwh4uLewJ35wC12h5t9XdxcXFHuH8zQCn48a/q0AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABv0lEQVR42u3ay4rDMAwF0Pz/T6fbgSHhSordBo5XpSn2SRdCDx9HvM4/6+r73tNjxcLFxR1zz9v1f+ur4692TnZIDLi4uPu5yWHVY6p/wb0BFxf3l7m9YHSf4uDi4r6Xe/X76g64uLhv4SbpSPJNXggtr9VwcXEH3LxLue7zkv4uLi5uiztpalRHL+d44eLi7uFWg041AZpMSC93w8XF3cKtlh/5WCV51by4wsXF3clNAke+XW8cW7jYgYuLu4Xbu541ee3k9w+kOLi4uA9x84CSh7B5W7Y8mcHFxR1w85QlB+VPq6fj4uLu586TmGrjNUmwotiJi4v7KDcfmeTt0d5wpVD84OLiLuYWaqNieOqVQIW4i4uLu4U7GaPmL987ERcXdye3OlKtJjfJznlDFhcXdw83v3LRu4DV62k0ix9cXNyHuL3xarPROSiBcHFxd3LP4qomQNXxSZSL4eLiLubOg0vvlfJaBhcX91vc3vGTxmjvkhYuLu5+bj5SLXdkW9EUFxf3LdzqICQJfOVmCi4u7o9xc0r++R5avp6Fi4v7KLdX/ExCXrXliouLu5NbzSvyaxYJd5JI4eLiLuB+ABnMTdSldBGSAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
