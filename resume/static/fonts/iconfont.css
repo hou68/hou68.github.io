@@ -58,9 +58,7 @@
 .icon-locallibrary:before { content: "\ec10"; }
 .icon-playlistadd:before { content: "\ecae"; }
 .icon-highlightremove:before { content: "\ebc0"; }
-.icon-delete:before { content: "\e61b"; }
-.icon-delete1:before { content: "\e610"; }
-.icon-delete2:before { content: "\e643"; }
+
 .icon-add:before { content: "\e620"; }
 .icon-add1:before { content: "\e676"; }
 .icon-trophy:before { content: "\e816"; }

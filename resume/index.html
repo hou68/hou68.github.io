@@ -1,11 +1,9 @@
-layout: false
-——————
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>简历生成器</title>
+    <title>个人简历</title>
     <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.0/remodal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remodal/1.1.0/remodal-default-theme.min.css">
@@ -53,7 +51,7 @@ layout: false
                     <li>
                         <label class="left-label">邮箱</label><span class="label-value">hou0608@aliyun.com</span></li>
                     <li>
-                        <label class="left-label">个人主页</label><span class="label-value">exit-tixe.me</span></li>
+                        <label class="left-label">个人博客</label><span class="label-value">https://hou68.github.io/</span></li>
                     <li>
                         <label class="left-label">Github</label><span class="label-value">https://github.com/hou68</span></li>
                 </ul>
@@ -96,14 +94,7 @@ layout: false
                 </ul>
             </div>
 
-            <div class="code info-unit">
-                <h2 class="info-header"><i class="iconfont icon-weixin"></i> <span class="info-title">个人微信</span></h2>
-                <hr>
-                <div class="weixin">
-                    <img src="static/image/weixin.png" alt="">
 
-                </div>
-            </div>
             <div class="remodal remodal-img" data-remodal-id="weixin-modal">
                 <h3>请输入图片URL地址：</h3>
                 <br/>
@@ -123,7 +114,7 @@ layout: false
                         </p>
                         <p>工作时间：2016年3月——2018年3月</p>
                     </li>
-                </ul class="experience-list">
+                </ul>
             </div>
             <div class="project info-unit right-list">
                 <h2 class="info-header"><i class="iconfont icon-project"></i> <span class="info-title">个人项目</span></h2>
@@ -158,9 +149,10 @@ layout: false
                             <b>使用技术：</b><br>
                             ext、jQuery、jsp、spring、spring mvc、batis、oracle、webservice<br>
                             <b>负责内容：</b><br>
-                            1 开发移动app用户白名单功能
-                            2 根据账号展示该用户所有待审核的数据，已审核的数据与创建的数据
-                            3 实现移动端审批数据的功能以及为下一审核人发推送
+                            1 开发移动app用户白名单功能<br>
+                            2 根据账号展示该用户所有待审核的数据，已审核的数据与创建的数据<br>
+                            3 实现移动端审批数据的功能，并查询出下一批审核人判断是否存在移动白名单中，若有则给审核人发推送消息<br>
+                            4 优化查询用户所有待审数据的效率，由之前的10s左右优化到5s以内
                         </p>
                     </li>
                 </ul>
