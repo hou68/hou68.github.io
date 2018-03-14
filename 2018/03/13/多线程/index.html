@@ -46,7 +46,7 @@
 <meta property="og:site_name" content="个人空间">
 <meta property="og:description" content="Java实现多线程的几种方式：  继承Thread类，重写父类的run()方法 实现Runnable接口 使用ExecutorService、Callable、Future实现由返回结果的多线程   &amp;nbsp;&amp;nbsp;其中Thread类中实现了Runnable接口,并且启动线程的时候要用到start()方法，所有当我们实现Runnable接口的时候，需要创建一个Thread对象，来启动线程。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-13T12:08:54.936Z">
+<meta property="og:updated_time" content="2018-03-14T12:24:48.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程">
 <meta name="twitter:description" content="Java实现多线程的几种方式：  继承Thread类，重写父类的run()方法 实现Runnable接口 使用ExecutorService、Callable、Future实现由返回结果的多线程   &amp;nbsp;&amp;nbsp;其中Thread类中实现了Runnable接口,并且启动线程的时候要用到start()方法，所有当我们实现Runnable接口的时候，需要创建一个Thread对象，来启动线程。">
@@ -191,7 +191,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java实现多线程的几种方式："><span class="post-toc-number">1.</span> <span class="post-toc-text">Java实现多线程的几种方式：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Callable和Future的了解"><span class="post-toc-number">2.</span> <span class="post-toc-text">Callable和Future的了解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sleep和wait的区别"><span class="post-toc-number">3.</span> <span class="post-toc-text">sleep和wait的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#notify和notifyall的区别"><span class="post-toc-number">4.</span> <span class="post-toc-text">notify和notifyall的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程池常用参数"><span class="post-toc-number">5.</span> <span class="post-toc-text">线程池常用参数</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java实现多线程的几种方式："><span class="post-toc-number">1.</span> <span class="post-toc-text">Java实现多线程的几种方式：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Callable和Future的了解"><span class="post-toc-number">2.</span> <span class="post-toc-text">Callable和Future的了解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#synchronized关键字的用法"><span class="post-toc-number">3.</span> <span class="post-toc-text">synchronized关键字的用法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#synchronized关键字的缺点"><span class="post-toc-number">4.</span> <span class="post-toc-text">synchronized关键字的缺点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Lock接口中的实现类"><span class="post-toc-number">5.</span> <span class="post-toc-text">Lock接口中的实现类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java-线程的几种状态"><span class="post-toc-number">6.</span> <span class="post-toc-text">java 线程的几种状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sleep和wait的区别"><span class="post-toc-number">7.</span> <span class="post-toc-text">sleep和wait的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#notify和notifyall的区别"><span class="post-toc-number">8.</span> <span class="post-toc-text">notify和notifyall的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程池常用参数"><span class="post-toc-number">9.</span> <span class="post-toc-text">线程池常用参数</span></a></li></ol>
         </nav>
     </aside>
    
@@ -243,15 +243,14 @@
 </li>
 </ol>
 <p>&nbsp;&nbsp;由源码可以看出来Future一共有三种功能：1、判断任务是否完成，2、手动取消任务，3、获取任务执行结构</p>
-<p>###synchronized关键字的用法<br>synchronized 是 java语言的关键字，当它用来修饰一个方法或者一个代码块的时候，能够保证在同一时刻最多只有一个线程执行该段代码。<br></p>
+<h3 id="synchronized关键字的用法"><a href="#synchronized关键字的用法" class="headerlink" title="synchronized关键字的用法"></a>synchronized关键字的用法</h3><p>synchronized 是 java语言的关键字，当它用来修饰一个方法或者一个代码块的时候，能够保证在同一时刻最多只有一个线程执行该段代码。<br></p>
 <ol>
 <li>当两个并发线程访问同一个对象中的这个synchronized(this)同步代码块时，一个时间内只能有一个线程得到执行。另一个线程必须等待当前线程执行完这个代码块以后才能执行该代码块。</li>
 <li>当一个线程访问一个对象的synchronized(this)同步代码块时，另一个线程仍然可以访问该对象中的非synchronized(this)同步代码块。</li>
 <li>当一个线程访问对象的一个synchronized(this)同步代码块时，其他线程对象中所有其它synchronized(this)同步代码块的访问将被阻塞。</li>
-<li>当一个线程访问对象的一个synchronized(this)同步代码块时，它就获得了这个对象的对象锁。结果，其它线程对该对象所有同步代码部分的访问都被暂时阻塞。<br>###synchronized关键字的缺点<br>&nbsp;&nbsp;当多个线程尝试获取锁时，未获取到锁的线程会不断的尝试获取锁，而不会发生中断，这样会造成性能消耗。<br>###Lock接口中的实现类<br>&nbsp;&nbsp;Lock接口有三个实现类，一个是ReentrantLock,另两个是ReentrantReadWriteLock类中的两个静态内部类ReadLock和WriteLock</li>
+<li>当一个线程访问对象的一个synchronized(this)同步代码块时，它就获得了这个对象的对象锁。结果，其它线程对该对象所有同步代码部分的访问都被暂时阻塞。<h3 id="synchronized关键字的缺点"><a href="#synchronized关键字的缺点" class="headerlink" title="synchronized关键字的缺点"></a>synchronized关键字的缺点</h3>&nbsp;&nbsp;当多个线程尝试获取锁时，未获取到锁的线程会不断的尝试获取锁，而不会发生中断，这样会造成性能消耗。<h3 id="Lock接口中的实现类"><a href="#Lock接口中的实现类" class="headerlink" title="Lock接口中的实现类"></a>Lock接口中的实现类</h3>&nbsp;&nbsp;Lock接口有三个实现类，一个是ReentrantLock,另两个是ReentrantReadWriteLock类中的两个静态内部类ReadLock和WriteLock</li>
 </ol>
-<p>###java 线程的几种状态</p>
-<ul>
+<h3 id="java-线程的几种状态"><a href="#java-线程的几种状态" class="headerlink" title="java 线程的几种状态"></a>java 线程的几种状态</h3><ul>
 <li>NEW 状态是指线程刚创建, 尚未启动</li>
 <li>RUNNABLE 状态是线程正在正常运行中, 当然可能会有某种耗时计算/IO等待的操作/CPU时间片切换等, 这个状态下发生的等待一般是其他系统资源, 而不是锁, Sleep等</li>
 <li>BLOCKED  这个状态下, 是在多个线程有同步操作的场景, 比如正在等待另一个线程的synchronized 块的执行释放, 或者可重入的 synchronized块里别人调用wait() 方法, 也就是这里是线程在等待进入临界区</li>
@@ -274,7 +273,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新：<time datetime="2018-03-13T12:08:54.936Z" itemprop="dateUpdated">2018-03-13 20:08:54</time>
+    最后更新：<time datetime="2018-03-14T12:24:48.204Z" itemprop="dateUpdated">2018-03-14 20:24:48</time>
 </span>
 
 
@@ -354,7 +353,15 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/03/14/linux/" id="post-prev" class="post-nav-link">
+        <h4 class="title" >
+          上一篇：Linux 笔记
+        </h4>
+      </a>
+    </div>
   
 
   
