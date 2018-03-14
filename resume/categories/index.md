@@ -1,2 +1,0 @@
-layout: categories
-comments: false
