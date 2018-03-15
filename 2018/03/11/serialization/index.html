@@ -330,6 +330,23 @@
 
     
     
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: '',
+            repo: '',
+            oauth: {
+                client_id: '580138edff8e2e068ed1',
+                client_secret: 'b21cfc5b3a678bbb24c9eba25b38d0ddf6ad2975',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
 
     
 
