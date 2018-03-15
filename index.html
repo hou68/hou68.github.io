@@ -9,6 +9,8 @@
     <title>个人空间</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     
+    <meta name="theme-color" content="#77AAFF">
+    
     
     <meta name="keywords" content="">
     
@@ -47,7 +49,7 @@
     
         <link rel="alternate" type="application/atom+xml" title="个人空间" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <link id="style" rel="stylesheet" href="/css/style.css?v=3.0">
     <script>window.lazyScripts=[]</script>
 
@@ -66,7 +68,7 @@
     <div class="brand-wrap" >
       <div class="brand">
         <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/" alt="avatar">
+          <img src="/img/picture.jpg" alt="avatar">
         </a>
         <hgroup class="introduce">
           <h5 class="nickname" id="name">joke</h5>
@@ -79,7 +81,54 @@
     <div class="scroll-wrap flex-col">
       <ul class="nav">
         
+              <li class="waves-block waves-effect active">
+                  <a href="/"  >
+                    <i class="icon icon-lg icon-home"></i>
+                    <span>主 页</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/archives"  >
+                    <i class="icon icon-lg icon-archives"></i>
+                    <span>归 档</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/categories"  >
+                    <i class="icon icon-lg icon-th-list"></i>
+                    <span>分 类</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/tags"  >
+                    <i class="icon icon-lg icon-tags"></i>
+                    <span>标 签</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
+              <li class="waves-block waves-effect">
+                  <a href="/resume"  >
+                    <i class="icon icon-lg icon-smile-o"></i>
+                    <span>关 于</span><i class="icon icon-lg icon-caret-left"></i>
+                  </a>
+              </li>
+            
       <div class="nav2">
+          
+              <a class="nav2item" data-title="Email" href="/hou0608@aliyun.com" target="_parent"title="Email" >
+                <i class="icon icon-lg icon-envelope-o envelope-o"></i>
+              </a>
+          
+              <a class="nav2item" data-title="Github" href="https://github.com/hou68" target="_blank"title="Github" >
+                <i class="icon icon-lg icon-github github"></i>
+              </a>
+          
+              <a class="nav2item" data-title="微博" href="https://weibo.com/u/1854475461/home?wvr=57" target="_blank"title="微博" >
+                <i class="icon icon-lg icon-weibo weibo"></i>
+              </a>
           
 
             </div>
@@ -100,6 +149,16 @@
         </a>
         <div class="flex-col header-title ellipsis">个人空间</div>
         
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
         <a href="../../atom.xml" target="_blank" class="header-icon waves-effect waves-circle waves-light" id="Rss">
             <i class="icon icon-lg icon-rss"></i>
         </a>
@@ -117,7 +176,7 @@
             </h1>
             <h5 class="subtitle">
                 
-                    
+                    在Web全栈的道路上努力前行
                 
             </h5>
         </div>
@@ -153,7 +212,8 @@
 
     
         Welcome to Wuwei`Blog
-Sprin...
+Spring Security based on Spring Boot
+一 基础篇Spring security 是什么？&emsp;&emsp;Spring Security是一个能够为基于Spring的企业应用系统提供声明式的安全访问控制解决方案的安全框架。它提供了一组可以在Spring应用上...
     
         <div>
             <a href="/2018/03/14/spring-security/" class="post-more waves-button">
@@ -191,7 +251,7 @@ Sprin...
 
     
         Welcome to Wuwei`Blog
-Sprin...
+Spring Boot 调试环境Spring Boot 工程idea开发环境简介&emsp;&emsp;本篇博客介绍一下在Intellij IDEA下对Springboot类型的项目的远程调试功能。所谓的远程调试就是服务端程序运行在一台远程服务器上，我们可以在本地服务端的代码（前提是本地的代码必须和...
     
         <div>
             <a href="/2018/03/14/springboot-debug/" class="post-more waves-button">
@@ -228,7 +288,9 @@ Sprin...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Git分支删除远程分支并保留本地分支&emsp;&em...
+        Git分支删除远程分支并保留本地分支&emsp;&emsp;先声明一点，如果要同时删除本地的和github上的文件，直接删除本地的再push就行了，比较简单。这里的要求是不能删除本地的文件，而要删除github里，就是网页上的文件。&emsp;&emsp;其实质就是删除缓冲区里的文件，再提交给服务器端。
+
+首先进入要删除的文件夹或文件的根目录...
     
         <div>
             <a href="/2018/03/14/git/" class="post-more waves-button">
@@ -266,7 +328,7 @@ Sprin...
 
     
         强制：
-【强制】应用中不可直接使用日志系统(Log4j...
+【强制】应用中不可直接使用日志系统(Log4j、Logback)中的 API，而应依赖使用日志框架SLF4J 中的 API，使用门面模式的日志框架，有利于维护和各个类的日志处理方式统一。import org.slf4j.Logger;import org.slf4j.LoggerFactory;private static final...
     
         <div>
             <a href="/2018/03/14/logback/" class="post-more waves-button">
@@ -303,7 +365,10 @@ Sprin...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        RedisREmote DIctionary Serv...
+        RedisREmote DIctionary Server(Redis)
+描述
+
+&emsp;&emsp;REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。Redis是一个开源(BSD许可)的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于...
     
         <div>
             <a href="/2018/03/14/redis/" class="post-more waves-button">
@@ -340,7 +405,7 @@ Sprin...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Linux 笔记LINUX笔记：最左边的 root 显...
+        Linux 笔记LINUX笔记：最左边的 root 显示的是『目前使用者的账号』， 而 @ 之后接的 linux 则是『主机名称』，至于最右边的 ~ 则指的是 『目前所在的目录』，那么那个 # 则是我们常常讲的『提示字符』啦！Tips: 那个 ~ 符号代表的是『使用者的家目录』的意思，他是个『变量！』这相关的意义我们会在后续的章节依序介绍到。...
     
         <div>
             <a href="/2018/03/14/linux/" class="post-more waves-button">
@@ -379,7 +444,12 @@ Sprin...
     
         Java实现多线程的几种方式：
 
-继承Thread类，...
+继承Thread类，重写父类的run()方法
+实现Runnable接口
+使用ExecutorService、Callable、Future实现由返回结果的多线程
+
+
+&nbsp;&nbsp;其中Thread类中实现了Runnable接口,并且启动线程的时候要用到start()方法，所有当我们实现Runnabl...
     
         <div>
             <a href="/2018/03/13/多线程/" class="post-more waves-button">
@@ -417,7 +487,9 @@ Sprin...
 
     
         一、ORACLE常见数据库优化手段
-SQL语句尽量用大...
+SQL语句尽量用大写的
+使用表的别名
+选择最有效率的表名顺序(只在基于规则的优化器(RBO)中有效)ORACLE 的解析器按照从右到左的顺序处理FROM子句中的表名，FROM子句中写在最后的表(基础表也称为驱动表,driving table)将被最先处理，在FROM子句中包含多个表的情况下,必须选择记录条数...
     
         <div>
             <a href="/2018/03/12/oracle/" class="post-more waves-button">
@@ -454,7 +526,7 @@ SQL语句尽量用大...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ###一、Java序列化简介&emsp;&emsp;J...
+        ###一、Java序列化简介&emsp;&emsp;Java 对象序列化是 JDK 1.1 中引入的一组开创性特性之一，用于作为一种将 Java 对象的状态转换为字节数组，以便存储或传输的机制，以后，仍可以将字节数组转换回 Java 对象原有的状态。实际上，序列化的思想是 “冻结” 对象状态，传输对象状态（写到磁盘、通过网络传输等等），然后 ...
     
         <div>
             <a href="/2018/03/11/serialization/" class="post-more waves-button">
@@ -491,7 +563,7 @@ SQL语句尽量用大...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        HashMap一、HashMap实现原理&emsp;&...
+        HashMap一、HashMap实现原理&emsp;&emsp;HashMap是基于哈希表实现的，每一个元素都是key-value对，其内部是通过单链表结构解决内部冲突问题,当容量不足的时候，会通过自动增长来解决这个问题&emsp;&emsp;HashMap是非线程安全的，所以用于单线程环境下,多线程环境下可以采用concurrent并发包下...
     
         <div>
             <a href="/2018/03/07/java/" class="post-more waves-button">
@@ -520,9 +592,9 @@ SQL语句尽量用大...
     <div class="footer-content">
         <span class="power">
             <i class="icon icon-lg icon-copyright"></i>
-            
+            2017
             <i class="icon icon-lg icon-heart"></i>
-            <a href="http://yoursite.com"></a>
+            <a href="http://yoursite.com">tomotoes.com</a>
             <br/>
             Power by
             <a href="https://hexo.io/" target="_blank" rel="external nofollow">Hexo</a>&nbsp;·&nbsp;
@@ -537,6 +609,17 @@ SQL语句尽量用大...
 
         <span>
             
+	<i class="icon icon-lg icon-user">
+<span id="busuanzi_container_site_uv" style='display:none'>
+       访问用户：<span id="busuanzi_value_site_uv"></span>
+    </span>人</i>
+    ·
+    <i class="icon icon-lg icon-eye">
+    <span id="busuanzi_container_site_pv" style='display:none'>
+      访问次数：<span id="busuanzi_value_site_pv"></span>
+    </span>次
+    </i>
+
 
         </span>
         <br/>
@@ -556,7 +639,7 @@ SQL语句尽量用大...
 
 <!-- 主题配置脚本 -->
 <script>
-var BLOG = { ROOT: '/', SHARE: , REWARD: false };
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </script>
 
 <!-- jquery -->
@@ -637,7 +720,7 @@ $("#name").bumpyText();
 
 /* 网站运行时间 */
 setInterval(function () {
-	setTime("");
+	setTime("2017/10/11");
 }, 1000);
 
 /* 文章块的淡出 */
@@ -670,6 +753,8 @@ if (window.console && window.console.log) {
 
 
 <!-- 不蒜子 -->
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 </body>
