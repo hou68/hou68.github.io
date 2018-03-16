@@ -1129,9 +1129,11 @@ function showTime(Counter) {
 					$(document.getElementById(url)).text(content);
 					return;
 				}
+				console.info(content);
 				for (var i = 0; i < results.length; i++) {
 					var object = results[i];
 					var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+						console.info(content);
 					$(document.getElementById(url)).text(content);
 				}
 			},
