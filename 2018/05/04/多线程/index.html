@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content=",,,," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -81,15 +81,17 @@
 
 
 
-<meta name="keywords" content="前端,Java,HTML,JavaScript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="Java实现多线程的几种方式：  继承Thread类，重写父类的run()方法 实现Runnable接口 使用ExecutorService、Callable、Future实现由返回结果的多线程   &amp;nbsp;&amp;nbsp;其中Thread类中实现了Runnable接口,并且启动线程的时候要用到start()方法，所有当我们实现Runnable接口的时候，需要创建一个Thread对象，来启动线程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java多线程">
+<meta property="og:url" content="http://yoursite.com/2018/05/04/多线程/index.html">
 <meta property="og:site_name" content="个人空间">
+<meta property="og:description" content="Java实现多线程的几种方式：  继承Thread类，重写父类的run()方法 实现Runnable接口 使用ExecutorService、Callable、Future实现由返回结果的多线程   &amp;nbsp;&amp;nbsp;其中Thread类中实现了Runnable接口,并且启动线程的时候要用到start()方法，所有当我们实现Runnable接口的时候，需要创建一个Thread对象，来启动线程。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-17T14:59:05.940Z">
+<meta property="og:updated_time" content="2018-03-14T12:24:48.204Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
+<meta name="twitter:title" content="Java多线程">
+<meta name="twitter:description" content="Java实现多线程的几种方式：  继承Thread类，重写父类的run()方法 实现Runnable接口 使用ExecutorService、Callable、Future实现由返回结果的多线程   &amp;nbsp;&amp;nbsp;其中Thread类中实现了Runnable接口,并且启动线程的时候要用到start()方法，所有当我们实现Runnable接口的时候，需要创建一个Thread对象，来启动线程。">
 
 
 
@@ -119,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/04/多线程/"/>
 
 
 
 
 
-  <title>标签 | 个人空间</title>
+  <title>Java多线程 | 个人空间</title>
   
 
 
@@ -284,40 +286,222 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/04/多线程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="joke">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="个人空间">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">标签</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 2 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/Git/" style="font-size: 12px; color: #ccc">Git</a> <a href="/tags/Java/" style="font-size: 12px; color: #ccc">Java</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Java多线程</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-04T21:51:46+08:00">
+                2018-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/04/多线程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/04/多线程/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h3 id="Java实现多线程的几种方式："><a href="#Java实现多线程的几种方式：" class="headerlink" title="Java实现多线程的几种方式："></a>Java实现多线程的几种方式：</h3><blockquote>
+<ol>
+<li>继承Thread类，重写父类的run()方法</li>
+<li>实现Runnable接口</li>
+<li>使用ExecutorService、Callable、Future实现由返回结果的多线程<br></li>
+</ol>
+</blockquote>
+<p>&nbsp;&nbsp;其中Thread类中实现了Runnable接口,并且启动线程的时候要用到start()方法，所有当我们实现Runnable接口的时候，需要创建一个Thread对象，来启动线程。带有返回值的线程是jdk1.5引入的新特性，实现Callable时需要重写call()方法，当启动线程的时候可以获取一个Future的对象，在这个对象上调用get()方法就可以获取到Callable任务返回的Object了。</p>
+<h3 id="Callable和Future的了解"><a href="#Callable和Future的了解" class="headerlink" title="Callable和Future的了解"></a>Callable和Future的了解</h3><ol>
+<li>Callable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface Callable&lt;V&gt; &#123;</span><br><span class="line">    /**</span><br><span class="line">     * Computes a result, or throws an exception if unable to do so.</span><br><span class="line">     *</span><br><span class="line">     * @return computed result</span><br><span class="line">     * @throws Exception if unable to compute a result</span><br><span class="line">     */</span><br><span class="line">    V call() throws Exception;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&nbsp;&nbsp;从源码中看，我们可以知道call()方法有返回值并且可以抛出异常，callable常与ExecutorService配合来使用，启动线程调用sumbit()方法即可</p>
+<ol>
+<li>Future<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public interface Future&lt;V&gt; &#123;</span><br><span class="line">	/**</span><br><span class="line">	*取消任务，如果取消任务成功则返回true</span><br><span class="line">	*/</span><br><span class="line">    boolean cancel(boolean mayInterruptIfRunning);</span><br><span class="line">	/**</span><br><span class="line">	*表示任务是否被取消成功，如果在任务正常完成前被取消成功，则返回 true。</span><br><span class="line">	*/</span><br><span class="line">    boolean isCancelled();</span><br><span class="line">	/**</span><br><span class="line">	*表示任务是否已经完成，若任务完成，则返回true；</span><br><span class="line">	*/</span><br><span class="line">    boolean isDone();</span><br><span class="line">	/**</span><br><span class="line">	*用来获取执行结果，这个方法会产生阻塞，会一直等到任务执行完毕才返回；</span><br><span class="line">	*/</span><br><span class="line">    V get() throws InterruptedException, ExecutionException;</span><br><span class="line">	/**</span><br><span class="line">	*用来获取执行结果，如果在指定时间内，还没获取到结果，就直接返回null。</span><br><span class="line">	*/</span><br><span class="line">    V get(long timeout, TimeUnit unit)</span><br><span class="line">        throws InterruptedException, ExecutionException, TimeoutException;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>&nbsp;&nbsp;由源码可以看出来Future一共有三种功能：1、判断任务是否完成，2、手动取消任务，3、获取任务执行结构</p>
+<h3 id="synchronized关键字的用法"><a href="#synchronized关键字的用法" class="headerlink" title="synchronized关键字的用法"></a>synchronized关键字的用法</h3><p>synchronized 是 java语言的关键字，当它用来修饰一个方法或者一个代码块的时候，能够保证在同一时刻最多只有一个线程执行该段代码。<br></p>
+<ol>
+<li>当两个并发线程访问同一个对象中的这个synchronized(this)同步代码块时，一个时间内只能有一个线程得到执行。另一个线程必须等待当前线程执行完这个代码块以后才能执行该代码块。</li>
+<li>当一个线程访问一个对象的synchronized(this)同步代码块时，另一个线程仍然可以访问该对象中的非synchronized(this)同步代码块。</li>
+<li>当一个线程访问对象的一个synchronized(this)同步代码块时，其他线程对象中所有其它synchronized(this)同步代码块的访问将被阻塞。</li>
+<li>当一个线程访问对象的一个synchronized(this)同步代码块时，它就获得了这个对象的对象锁。结果，其它线程对该对象所有同步代码部分的访问都被暂时阻塞。<h3 id="synchronized关键字的缺点"><a href="#synchronized关键字的缺点" class="headerlink" title="synchronized关键字的缺点"></a>synchronized关键字的缺点</h3>&nbsp;&nbsp;当多个线程尝试获取锁时，未获取到锁的线程会不断的尝试获取锁，而不会发生中断，这样会造成性能消耗。<h3 id="Lock接口中的实现类"><a href="#Lock接口中的实现类" class="headerlink" title="Lock接口中的实现类"></a>Lock接口中的实现类</h3>&nbsp;&nbsp;Lock接口有三个实现类，一个是ReentrantLock,另两个是ReentrantReadWriteLock类中的两个静态内部类ReadLock和WriteLock</li>
+</ol>
+<h3 id="java-线程的几种状态"><a href="#java-线程的几种状态" class="headerlink" title="java 线程的几种状态"></a>java 线程的几种状态</h3><ul>
+<li>NEW 状态是指线程刚创建, 尚未启动</li>
+<li>RUNNABLE 状态是线程正在正常运行中, 当然可能会有某种耗时计算/IO等待的操作/CPU时间片切换等, 这个状态下发生的等待一般是其他系统资源, 而不是锁, Sleep等</li>
+<li>BLOCKED  这个状态下, 是在多个线程有同步操作的场景, 比如正在等待另一个线程的synchronized 块的执行释放, 或者可重入的 synchronized块里别人调用wait() 方法, 也就是这里是线程在等待进入临界区</li>
+<li>WAITING  这个状态下是指线程拥有了某个锁之后, 调用了他的wait()方法, 等待其他线程/锁拥有者调用 notify / notifyAll 一遍该线程可以继续下一步操作, 这里要区分 BLOCKED 和 WATING 的区别, 一个是在临界点外面等待进入, 一个是在理解点里面wait等待别人notify, 线程调用了join方法 join了另外的线程的时候, 也会进入WAITING状态, 等待被他join的线程执行结束</li>
+<li>TIMED_WAITING  这个状态就是有限的(时间限制)的WAITING, 一般出现在调用wait(long), join(long)等情况下, 另外一个线程sleep后, 也会进入TIMED_WAITING状态</li>
+<li>TERMINATED 这个状态下表示 该线程的run方法已经执行完毕了, 基本上就等于死亡了(当时如果线程被持久持有, 可能不会被回收)<h3 id="sleep和wait的区别"><a href="#sleep和wait的区别" class="headerlink" title="sleep和wait的区别"></a>sleep和wait的区别</h3></li>
+<li>每个对象都有一个锁来控制同步访问，Synchronized关键字可以和对象的锁交互，来实现同步方法或同步块。sleep()方法正在执行的线程主动让出CPU（然后CPU就可以去执行其他任务），在sleep指定时间后CPU再回到该线程继续往下执行(注意：sleep方法只让出了CPU，而并不会释放同步资源锁！！！)；wait()方法则是指当前线程让自己暂时退让出同步资源锁，以便其他正在等待该资源的线程得到该资源进而运行，只有调用了notify()方法，之前调用wait()的线程才会解除wait状态，可以去参与竞争同步资源锁，进而得到执行。（注意：notify的作用相当于叫醒睡着的人，而并不会给他分配任务，就是说notify只是让之前调用wait的线程有权利重新参与线程的调度）；</li>
+<li>sleep()方法可以在任何地方使用；wait()方法则只能在同步方法或同步块中使用；</li>
+<li>sleep()是线程线程类（Thread）的方法，调用会暂停此线程指定的时间，但监控依然保持，不会释放对象锁，到时间自动恢复；wait()是Object的方法，调用会放弃对象锁，进入等待队列，待调用notify()/notifyAll()唤醒指定的线程或者所有线程，才会进入锁池，不再次获得对象锁才会进入运行状态；<h3 id="notify和notifyall的区别"><a href="#notify和notifyall的区别" class="headerlink" title="notify和notifyall的区别"></a>notify和notifyall的区别</h3>当一个线程进入wait之后，就必须等其他线程notify/notifyall,使用notifyall,可以唤醒所有处于wait状态的线程，使其重新进入锁的争夺队列中，而notify只能唤醒一个。注意，任何时候只有一个线程可以获得锁，也就是说只有一个线程可以运行synchronized 中的代码，notifyall只是让处于wait的线程重新拥有锁的争夺权，但是只会有一个获得锁并执行。<h3 id="线程池常用参数"><a href="#线程池常用参数" class="headerlink" title="线程池常用参数"></a>线程池常用参数</h3></li>
+<li>corePoolSize<br>  在创建了线程池后，默认情况下，线程池中并没有任何线程，而是等待有任务到来才创建线程去执行任务，（除非调用了prestartAllCoreThreads()或者prestartCoreThread()方法，从这2个方法的名字就可以看出，是预创建线程的意思，即在没有任务到来之前就创建corePoolSize个线程或者一个线程）。<br>  默认情况下，在创建了线程池后，线程池中的线程数为0，当有任务来之后，就会创建一个线程去执行任务，当线程池中的线程数目达到corePoolSize后，就会把到达的任务放到缓存队列当中。核心线程在allowCoreThreadTimeout被设置为true时会超时退出，默认情况下不会退出。</li>
+<li>maxPoolSize<br>  当线程数大于或等于核心线程，且任务队列已满时，线程池会创建新的线程，直到线程数量达到maxPoolSize。如果线程数已等于maxPoolSize，且任务队列已满，则已超出线程池的处理能力，线程池会拒绝处理任务而抛出异常。</li>
+<li>keepAliveTime<br>  当线程空闲时间达到keepAliveTime，该线程会退出，直到线程数量等于corePoolSize。如果allowCoreThreadTimeout设置为true，则所有线程均会退出直到线程数量为0。</li>
+<li>allowCoreThreadTimeout<br>  是否允许核心线程空闲退出，默认值为false。</li>
+<li>queueCapacity<br>  任务队列容量。从maxPoolSize的描述上可以看出，任务队列的容量会影响到线程的变化，因此任务队列的长度也需要恰当的设置。</li>
+</ul>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="joke 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="joke 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/04/springboot-debug/" rel="next" title="Spring Boot 远程调试">
+                <i class="fa fa-chevron-left"></i> Spring Boot 远程调试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -326,6 +510,17 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -346,8 +541,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -434,6 +638,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java实现多线程的几种方式："><span class="nav-number">1.</span> <span class="nav-text">Java实现多线程的几种方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Callable和Future的了解"><span class="nav-number">2.</span> <span class="nav-text">Callable和Future的了解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized关键字的用法"><span class="nav-number">3.</span> <span class="nav-text">synchronized关键字的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#synchronized关键字的缺点"><span class="nav-number">4.</span> <span class="nav-text">synchronized关键字的缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lock接口中的实现类"><span class="nav-number">5.</span> <span class="nav-text">Lock接口中的实现类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java-线程的几种状态"><span class="nav-number">6.</span> <span class="nav-text">java 线程的几种状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sleep和wait的区别"><span class="nav-number">7.</span> <span class="nav-text">sleep和wait的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#notify和notifyall的区别"><span class="nav-number">8.</span> <span class="nav-text">notify和notifyall的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池常用参数"><span class="nav-number">9.</span> <span class="nav-text">线程池常用参数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -651,6 +871,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'hou68',
+            repo: 'hou68.github.io',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'e32c078892d79143dafd3c0810c55a54ea49dcb4',
+            
+                client_id: '580138edff8e2e068ed1'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
